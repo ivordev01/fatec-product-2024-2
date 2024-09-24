@@ -14,12 +14,16 @@ export class ProductService {
     return this.http.get<Product []>('http://localhost:3000/products');
   }
 
+
+  getProductById(id:number): Observable<Product>{
+    return this.http.get<Product>('http://localhost:3000/products/' + id);
+  }
+
   delete(product:Product): Observable<void>{
     return this.http.delete<void>('http://localhost:3000/products/' + product.id);
   }
 
-
-
-
-
-}
+  update(product: Product):Observable<Product>{
+    return this.http.put<Product>('http://localhost:3000/products/' + product.id, product)
+    }
+  }
